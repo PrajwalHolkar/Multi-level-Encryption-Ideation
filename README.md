@@ -18,7 +18,6 @@ Multi Level Encryption (Ideation) is a Flask-based web application that allows u
 - [Deployment](#deployment)
 - [Built With](#built-with)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -68,6 +67,3 @@ Before you begin, ensure you have the following installed:
 - [MySQL](https://www.mysql.com/) - Database
 - [Crypto (PyCryptodome)](https://www.pycryptodome.org/) - Cryptographic library for AES encryption
 - [Cryptography](https://cryptography.io/en/latest/) - Cryptographic library for RSA encryption
-
-### License
-This project is licensed under the [MIT License](https://github.com/21Sandesh/Multi-Level-Encryption-Ideation/blob/main/LICENSE).
