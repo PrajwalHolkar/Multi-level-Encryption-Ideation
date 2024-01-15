@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light gray background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #d1d7a5;
+        }
+
+        h1 {
+            color: black; /* Blue color */
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 10px; /* Added margin for spacing between buttons */
+            transition: background-color 0.3s;
+        }
+
+        a.login {
+            background-color: #28a745; /* Green color for Login */
+        }
+
+        a.register {
+            background-color: #808080; /* Grey color for Register */
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Login/Register Page</h1>
+    <p>
+        <a class="register" href="{{ url_for('register') }}">Register</a>
+        <a class="login" href="{{ url_for('login') }}">Login</a>
+        
+    </p>
+</body>
+
+</html>

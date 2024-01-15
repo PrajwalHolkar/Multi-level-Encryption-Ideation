@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light gray background color */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            border: 2px solid #ddd; /* Light gray border */
+            border-radius: 8px;
+            background-color: #fff; /* White background color */
+            box-sizing: border-box;
+            background-color: #d1d7a5;
+        }
+
+        h1 {
+            color: #007bff; /* Blue color */
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            margin: 10px 0;
+            font-weight: bold;
+            color: inherit; /* Inherit text color */
+            text-align: center;
+        }
+
+        li.success {
+            color: green;
+        }
+
+        li.error {
+            color: red;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid black; /* Solid black border */
+            padding: 20px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 80%; /* Adjust the width as needed */
+            max-width: 400px; /* Set a maximum width if desired */
+            background-color: #b3d4e2; /* Light green background color */
+        }
+
+        label {
+            margin-bottom: 10px;
+            text-align: left;
+            color: #333; /* Dark gray text color */
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+        }
+
+        select {
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #56626e; /* Blue color */
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Register</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li class="{% if 'danger' in message %}error{% else %}success{% endif %}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('register') }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+        <label for="role">Role:</label>
+        <select name="role" required>
+            <option value="Admin">Admin</option>
+            <option value="Editor">Editor</option>
+            <option value="Reader">Reader</option>
+            <option value="Viewer">Viewer</option>
+        </select><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+
+</html>

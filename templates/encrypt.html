@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt Data</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            color: #42c5f5;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label,
+        input {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        input[type="file"] {
+            color: #42c5f5;
+        }
+
+        input[type="submit"] {
+            background-color: #42c5f5;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1976D2;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li.success {
+            color: #4CAF50;
+        }
+
+        li.danger {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Encrypt Data</h1>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li class="{% if 'danger' in message %}danger{% else %}success{% endif %}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" action="{{ url_for('encrypt') }}" enctype="multipart/form-data">
+        <label for="file">Choose a .txt file to encrypt:</label>
+        <input type="file" name="file" accept=".txt" required><br>
+        <input type="submit" value="Encrypt">
+    </form>
+</body>
+
+</html>

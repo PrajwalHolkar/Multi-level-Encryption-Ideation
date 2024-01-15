@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: #42c5f5;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        th,
+        td {
+            border: 1px solid #424242;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #212121;
+        }
+
+        td a {
+            color: #42c5f5;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+        button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    /* Style for the delete button */
+    button.delete {
+        background-color: rgb(227, 76, 76); /* Red */
+    }
+
+    button.EncryptDataBtn{
+        background-color: grey;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome, {{ name }}!</h1>
+    <p><button class="EncryptDataBtn"><a href="{{ url_for('encrypt') }}" style="color: #ffffff;">Encrypt Data</a></button></p>
+    <h2>Your Encrypted Data:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Action</th>
+                <th>Date Stored</th>
+                <th>AESCipher</th>
+                <th>RSACipher</th>
+                <th>RSAPublicKey</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td><button><a style="color:#ffffff" href="{{ url_for('decrypt', entry_id=entry[0]) }}">Decrypt</a></button>
+                <form method="post" action="{{ url_for('delete_entry', entry_id=entry[0]) }}" style="display:inline;">
+                    <button class="delete" type="submit">Delete</button>
+                </form></td>
+                <td>{{ entry[1] }}</td>
+                <td>{{ entry[2] }}</td>
+                <td>{{ entry[3] }}</td>
+                <td>{{ entry[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
